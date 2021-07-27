@@ -6,16 +6,24 @@
 const tableData = data;
 
 // get table references where table will be inserted
+var tbody = d3.select("tbody");
 
+console.log(tableData);
 
-function buildTable(data) {
-  // When the page loads, it needs to display the table
-  // But if the table reloads then you may need to ensure the 
-  // previous output is cleared/overwritten from scratch 
+// When the page loads, it needs to display the table
+// But if the table reloads then you may need to ensure the 
+// previous output is cleared/overwritten from scratch 
 
-  // Think of the class activities for generating tables
-
-}
+// Think of the class activities for generating tables
+function buildTable(tableData) {
+  tableData.forEach((ufoReport) => {
+      let row = tbody.append("tr");
+      Object.entries(ufoReport).forEach(([key, value]) => {
+        let cell = row.append("td");
+        cell.text(value);
+      });
+    });
+};
 
 function handleClick() {
 
